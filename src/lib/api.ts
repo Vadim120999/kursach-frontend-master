@@ -42,3 +42,26 @@ export const createTask = async (data: {
   const response = await api.post('/tasks', data);
   return response.data;
 };
+
+export const updateTask = async (id: string, data: {
+  projectId?: string;
+  name?: string;
+  description?: string;
+  duration?: number;
+  startDate?: string;
+  endDate?: string;
+  dependencyIds?: string[];
+}) => {
+  const response = await api.put(`/tasks/${id}`, data);
+  return response.data;
+};
+
+export const deleteTask = async (id: string) => {
+  const response = await api.delete(`/tasks/${id}`);
+  return response.data;
+};
+
+export const getProjects = async () => {
+  const response = await api.get('/projects');
+  return response.data;
+};
